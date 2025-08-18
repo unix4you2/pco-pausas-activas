@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pausas Activas - Bienestar Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Overlay para menú móvil -->
+    <div class="mobile-overlay hidden" id="mobileOverlay"></div>
+
+    <!-- Botón hamburguesa para móvil -->
+    <button class="hamburger-btn" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Pausas Activas</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#dashboard" class="menu-item active" data-section="dashboard">
+                <span class="menu-icon">🏠</span> Dashboard
+            </a></li>
+            <li><a href="#pausas-visuales" class="menu-item" data-section="pausas-visuales">
+                <span class="menu-icon">👁️</span> Pausas Visuales
+            </a></li>
+            <li><a href="#ejercicios-musculares" class="menu-item" data-section="ejercicios-musculares">
+                <span class="menu-icon">💪</span> Ejercicios Musculares
+            </a></li>
+            <li><a href="#estiramientos" class="menu-item" data-section="estiramientos">
+                <span class="menu-icon">🧘‍♂️</span> Estiramientos
+            </a></li>
+            <li><a href="#estadisticas" class="menu-item" data-section="estadisticas">
+                <span class="menu-icon">📊</span> Estadísticas
+            </a></li>
+            <li><a href="#configuracion" class="menu-item" data-section="configuracion">
+                <span class="menu-icon">⚙️</span> Configuración
+            </a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Dashboard -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h1>Dashboard</h1>
+                <p>Bienvenido a tu espacio de bienestar digital 💚</p>
+            </div>
+            
+            <div class="dashboard-cards">
+                <div class="card stats-card">
+                    <div class="card__body">
+                        <h3>Hoy 📅</h3>
+                        <div class="stat-number" id="pausasHoy">0</div>
+                        <p>Pausas realizadas ✨</p>
+                    </div>
+                </div>
+                <div class="card stats-card">
+                    <div class="card__body">
+                        <h3>Tiempo Total ⏰</h3>
+                        <div class="stat-number" id="tiempoTotalHoy">0m</div>
+                        <p>En pausas activas 🌟</p>
+                    </div>
+                </div>
+                <div class="card stats-card">
+                    <div class="card__body">
+                        <h3>Racha 🔥</h3>
+                        <div class="stat-number" id="racha">0</div>
+                        <p>Días consecutivos 💯</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h3>Acciones Rápidas 🚀</h3>
+                <button class="btn btn--primary btn--lg" id="pausaRapidaBtn">🎯 Pausa Rápida</button>
+            </div>
+
+            <div class="recommendations">
+                <h3>Recomendaciones 💡</h3>
+                <div id="recommendationsList" class="recommendations-list">
+                    <!-- Se llenan dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Pausas Visuales -->
+        <section id="pausas-visuales" class="content-section">
+            <div class="section-header">
+                <h1>Pausas Visuales 👁️</h1>
+                <p>Ejercicios para descansar y fortalecer tu vista ✨</p>
+            </div>
+            <div class="exercise-grid" id="pausasVisualesGrid">
+                <!-- Se llenan dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Ejercicios Musculares -->
+        <section id="ejercicios-musculares" class="content-section">
+            <div class="section-header">
+                <h1>Ejercicios Musculares 💪</h1>
+                <p>Fortalece tus músculos desde la comodidad de tu escritorio 🏃‍♀️</p>
+            </div>
+            <div class="exercise-grid" id="ejerciciosMuscularesGrid">
+                <!-- Se llenan dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Estiramientos -->
+        <section id="estiramientos" class="content-section">
+            <div class="section-header">
+                <h1>Estiramientos 🧘‍♂️</h1>
+                <p>Relaja y estira tus músculos para mayor flexibilidad ✨</p>
+            </div>
+            <div class="exercise-grid" id="estiramientosGrid">
+                <!-- Se llenan dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section id="estadisticas" class="content-section">
+            <div class="section-header">
+                <h1>Estadísticas 📊</h1>
+                <p>Tu progreso en pausas activas 🌟</p>
+            </div>
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Tiempo Total ⏰</h3>
+                        <div class="stat-large" id="tiempoTotalGeneral">0 minutos</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Pausas Completadas 🎯</h3>
+                        <div class="stat-large" id="pausasCompletadas">0</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Tipo Favorito 🏆</h3>
+                        <div class="stat-large" id="tipoFavorito">-</div>
+                    </div>
+                </div>
+            </div>
+            <div class="share-section">
+                <h3>Comparte tus Logros 🙌</h3>
+                <div class="share-buttons">
+                    <button class="btn btn--outline share-btn whatsapp" id="shareWhatsApp">
+                        <span class="share-emoji">💚</span> WhatsApp
+                    </button>
+                    <button class="btn btn--outline share-btn facebook" id="shareFacebook">
+                        <span class="share-emoji">📘</span> Facebook
+                    </button>
+                    <button class="btn btn--outline share-btn twitter" id="shareTwitter">
+                        <span class="share-emoji">🐦</span> Twitter/X
+                    </button>
+                    <button class="btn btn--outline share-btn linkedin" id="shareLinkedIn">
+                        <span class="share-emoji">💼</span> LinkedIn
+                    </button>
+                    <button class="btn btn--outline share-btn telegram" id="shareTelegram">
+                        <span class="share-emoji">✈️</span> Telegram
+                    </button>
+                    <button class="btn btn--outline share-btn pinterest" id="sharePinterest">
+                        <span class="share-emoji">📌</span> Pinterest
+                    </button>
+                    <button class="btn btn--outline share-btn instagram" id="shareInstagram">
+                        <span class="share-emoji">📷</span> Instagram
+                    </button>
+                    <button class="btn btn--outline share-btn tiktok" id="shareTikTok">
+                        <span class="share-emoji">🎵</span> TikTok
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuración -->
+        <section id="configuracion" class="content-section">
+            <div class="section-header">
+                <h1>Configuración ⚙️</h1>
+                <p>Personaliza tu experiencia 🎨</p>
+            </div>
+            <div class="config-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">Frecuencia de Recordatorios ⏰</label>
+                            <select id="frecuenciaRecordatorios" class="form-control">
+                                <option value="30">Cada 30 minutos</option>
+                                <option value="60" selected>Cada 1 hora</option>
+                                <option value="120">Cada 2 horas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">Duración de Pausas ⏱️</label>
+                            <select id="duracionPausas" class="form-control">
+                                <option value="5">5 minutos</option>
+                                <option value="10" selected>10 minutos</option>
+                                <option value="15">15 minutos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">Tema 🎨</label>
+                            <select id="tema" class="form-control">
+                                <option value="auto">Automático</option>
+                                <option value="light">Claro</option>
+                                <option value="dark">Oscuro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label class="form-label">Efectos de Sonido 🔊</label>
+                            <div class="audio-controls">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="soundEnabled" checked>
+                                    <span class="checkmark"></span>
+                                    Habilitar sonidos
+                                </label>
+                                <div class="volume-control">
+                                    <label class="form-label">Volumen 🎵</label>
+                                    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5" class="volume-slider">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para ejercicios -->
+    <div class="modal hidden" id="exerciseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Ejercicio</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-visual" id="exerciseVisual">
+                    <!-- SVG illustrations go here -->
+                </div>
+                <div class="exercise-instructions" id="exerciseInstructions">
+                    <!-- Se llenan dinámicamente -->
+                </div>
+                <div class="timer-section">
+                    <div class="timer-circle">
+                        <div class="timer-display" id="timerDisplay">00:00</div>
+                        <div class="timer-warning hidden" id="timerWarning">🔥 ¡Últimos segundos!</div>
+                    </div>
+                    <div class="timer-controls">
+                        <button class="btn btn--primary" id="startBtn">▶️ Iniciar</button>
+                        <button class="btn btn--secondary hidden" id="pauseBtn">⏸️ Pausar</button>
+                        <button class="btn btn--outline" id="stopBtn">⏹️ Detener</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para compartir -->
+    <div class="modal hidden" id="shareModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🙌 Copiar Mensaje</h2>
+                <button class="modal-close" id="shareModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="shareMessage" class="form-control share-textarea" readonly></textarea>
+                <button class="btn btn--primary" id="copyMessageBtn">📋 Copiar al Portapapeles</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
